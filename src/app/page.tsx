@@ -1,14 +1,14 @@
-import CommunitySection from "@/components/community/CommunitySection";
-import CTASection from "@/components/cta-section/CTASection";
-import DataSection from "@/components/data-section/DataSection";
-import FeaturesSection from "@/components/features/FeaturesSection";
-import GradientBg from "@/components/features/GradientBg";
-import HeroSection from "@/components/hero/HeroSection";
+// import CommunitySection from "@/components/community/CommunitySection";
+// import CTASection from "@/components/cta-section/CTASection";
+// import DataSection from "@/components/data-section/DataSection";
+// import FeaturesSection from "@/components/features/FeaturesSection";
+// import GradientBg from "@/components/features/GradientBg";
+// import HeroSection from "@/components/hero/HeroSection";
 
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      <section id="heroSection" className="hero-section h-screen">
+      {/* <section id="heroSection" className="hero-section h-screen">
         <HeroSection />
       </section>
       <section id="dataSection" className="data-section">
@@ -33,7 +33,7 @@ export default function Home() {
         className="z-10 relative px-10 bg-background cta-section"
       >
         <CTASection />
-      </section>
+      </section> */}
     </main>
   );
 }
