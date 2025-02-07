@@ -1,14 +1,13 @@
 "use client";
 
 import FeatureItem from "./FeatureItem";
-import LockIcon from "@/../public/icons/lock.json";
-// import StarIcon from "@/../public/icons/star.json";
-// import FireworkIcon from "@/../public/icons/firework.json";
-// import SphereIcon from "@/../public/icons/sphere.json";
 import { useGSAPContext } from "@/providers/GSAPProvider";
 import { useRef } from "react";
 import ColorenHeadingText from "../global/ColoredHeadingText";
 import { useMountedContext } from "@/providers/MountContext";
+import { MdOutlineLock, MdOutlineRocketLaunch } from "react-icons/md";
+import { FaRegStar } from "react-icons/fa";
+import { TfiWorld } from "react-icons/tfi";
 
 const featuresData = [
   {
@@ -16,29 +15,37 @@ const featuresData = [
     title: "Secure",
     description:
       "Our platform is built on blockchain technology, ensuring that every transaction is transparent, safe, and decentralized. Enjoy true ownership of your digital assets, with full control and peace of mind.",
-    icon: LockIcon,
+    icon: (
+      <MdOutlineLock className="text-foreground size-24 group-hover:text-primary/70 transition-colors ease-in duration-300" />
+    ),
   },
-  // {
-  //   id: 2,
-  //   title: "Exclusive",
-  //   description:
-  //     "Gain access to a curated collection of rare and high-quality NFTs, featuring work from top artists and emerging creators. Our marketplace is designed to connect collectors with one-of-a-kind digital assets you won't find anywhere else.",
-  //   icon: StarIcon,
-  // },
-  // {
-  //   id: 3,
-  //   title: "Efficient",
-  //   description:
-  //     "Experience the future of NFT trading with minimal fees and lightning-fast transactions. Our platform is optimized for seamless performance, so you can buy, sell, and trade with ease, without waiting for slow confirmations or dealing with high costs.",
-  //   icon: FireworkIcon,
-  // },
-  // {
-  //   id: 4,
-  //   title: "Global",
-  //   description:
-  //     "Join a worldwide community of creators and collectors, engaging in a truly global marketplace where digital art and collectibles are accessible to everyone, no matter where you are.",
-  //   icon: SphereIcon,
-  // },
+  {
+    id: 2,
+    title: "Exclusive",
+    description:
+      "Gain access to a curated collection of rare and high-quality NFTs, featuring work from top artists and emerging creators. Our marketplace is designed to connect collectors with one-of-a-kind digital assets you won't find anywhere else.",
+    icon: (
+      <FaRegStar className="text-foreground size-24 group-hover:text-primary/70 transition-colors ease-in duration-300" />
+    ),
+  },
+  {
+    id: 3,
+    title: "Efficient",
+    description:
+      "Experience the future of NFT trading with minimal fees and lightning-fast transactions. Our platform is optimized for seamless performance, so you can buy, sell, and trade with ease, without waiting for slow confirmations or dealing with high costs.",
+    icon: (
+      <MdOutlineRocketLaunch className="text-foreground size-24 group-hover:text-primary/70 transition-colors ease-in duration-300" />
+    ),
+  },
+  {
+    id: 4,
+    title: "Global",
+    description:
+      "Join a worldwide community of creators and collectors, engaging in a truly global marketplace where digital art and collectibles are accessible to everyone, no matter where you are.",
+    icon: (
+      <TfiWorld className="text-foreground size-24 group-hover:text-primary/70 transition-colors ease-in duration-300" />
+    ),
+  },
 ];
 
 export default function FeaturesSection() {
@@ -101,10 +108,9 @@ export default function FeaturesSection() {
         ref={featuresWrapperRef}
         className="grid md:grid-cols-2 mt-10 md:mt-20 gap-5 lg:gap-16 px-10"
       >
-        {/* {featuresData.map((item) => (
+        {featuresData.map((item) => (
           <FeatureItem key={item.id} {...item} />
-        ))} */}
-        <FeatureItem {...featuresData[0]} />
+        ))}
       </section>
     </div>
   );

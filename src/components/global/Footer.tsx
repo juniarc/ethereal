@@ -82,7 +82,6 @@ export default function Footer() {
           <FaRegCopyright />
           <p>2025 JUNIARC</p>
         </div>
-        <a href="https://lordicon.com/">Animated icons by Lordicon.com</a>
       </div>
     </footer>
   );
