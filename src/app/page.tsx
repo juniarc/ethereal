@@ -1,7 +1,7 @@
 import CommunitySection from "@/components/community/CommunitySection";
 import CTASection from "@/components/cta-section/CTASection";
 import DataSection from "@/components/data-section/DataSection";
-// import FeaturesSection from "@/components/features/FeaturesSection";
+import FeaturesSection from "@/components/features/FeaturesSection";
 import GradientBg from "@/components/features/GradientBg";
 import HeroSection from "@/components/hero/HeroSection";
 
@@ -18,9 +18,9 @@ export default function Home() {
         <div className="relative">
           <GradientBg />
         </div>
-        {/* <section className="overflow-hidden features-section">
+        <section className="overflow-hidden features-section">
           <FeaturesSection />
-        </section> */}
+        </section>
       </div>
       <section
         id="communitySection"
