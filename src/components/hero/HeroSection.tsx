@@ -160,7 +160,7 @@ export default function HeroSection() {
               } else {
                 return (
                   <Link
-                    href="*"
+                    href="/"
                     ref={exploreRef}
                     className="hover-btn relative font-bold text-white px-4 py-1 md:px-8 md:py-3 rounded-full bg-gradient-to-br from-secondary to-primary"
                   >
