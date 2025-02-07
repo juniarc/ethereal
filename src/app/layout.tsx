@@ -37,24 +37,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-        {/* Facebook, Instagram */}
+        {/* Facebook, Instagram
         <meta property="og:title" content="Ethereal" />
         <meta property="og:description" content="Web3 Project" />
         <meta property="og:url" content="https://yourwebsite.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Ethereal" />
+        <meta property="og:site_name" content="Ethereal" /> */}
 
         {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
+        {/* <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ethereal" />
         <meta name="twitter:description" content="Web3 Project" />
-        <meta name="twitter:site" content="@Ethereal" />
+        <meta name="twitter:site" content="@Ethereal" /> */}
 
         {/* TikTok, YouTube, and Others */}
-        <meta property="og:video" content="https://www.youtube.com/" />
+        {/* <meta property="og:video" content="https://www.youtube.com/" />
         <meta property="og:video:type" content="text/html" />
         <meta property="og:video:width" content="1280" />
-        <meta property="og:video:height" content="720" />
+        <meta property="og:video:height" content="720" /> */}
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
