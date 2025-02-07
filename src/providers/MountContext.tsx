@@ -10,6 +10,7 @@ export const MountProvider = ({ children }: { children: React.ReactNode }) => {
   const lenis = useLenis();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (lenis) {
       lenis?.scrollTo(0, { immediate: true });
     }
