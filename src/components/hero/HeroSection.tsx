@@ -103,11 +103,11 @@ export default function HeroSection() {
           alt="Hero Background"
         />
       </div>
-      <div className="w-full md:w-3/5 h-screen relative flex justify-center items-center px-4">
+      <div className="w-full md:w-3/5 h-screen relative flex justify-center items-center px-4 bg-background dark:mix-blend-lighten mix-blend-darken">
         <div className="flex flex-col items-center gap-5 md:gap-10">
           <h1
             ref={headingRef}
-            className="relative font-extrabold text-[10vw] leading-[10vw] w-3/4 md:w-auto md:text-[5vw] md:leading-[5vw] text-center overflow-hidden transition"
+            className="relative font-extrabold text-[10vw] leading-[10vw] w-3/4 md:w-auto md:text-[5vw] md:leading-[5vw] text-center"
           >
             {headingText.split(" ").map((word, index, array) => (
               <div
