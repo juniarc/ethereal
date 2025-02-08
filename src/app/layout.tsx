@@ -56,7 +56,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body
-        className={`${raleway.variable} ${openSans.variable} light-theme antialiased overflow-hidden max-w-screen`}
+        className={`${raleway.variable} ${openSans.variable} scroll-beh light-theme antialiased overflow-x-hidden max-w-screen`}
       >
         <MountProvider>
           <ScreenSizeProvider>

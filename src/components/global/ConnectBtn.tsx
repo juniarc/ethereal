@@ -1,6 +1,10 @@
+"use client";
+
+import { useScreenSizeContext } from "@/providers/ScreenSizeProvider";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { FaChevronDown, FaWallet } from "react-icons/fa6";
 export default function ConnectBtn() {
+  const { deviceType } = useScreenSizeContext();
   return (
     <div>
       <ConnectButton.Custom>
@@ -39,7 +43,7 @@ export default function ConnectBtn() {
                       onClick={openConnectModal}
                       type="button"
                     >
-                      Connect Wallet
+                      {deviceType === "mobile" ? "Connect" : "Connect Wallet"}
                     </button>
                   );
                 }
