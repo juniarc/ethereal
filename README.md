@@ -12,7 +12,9 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can visit web link: [Ethereal Website](https://ethereal-nu.vercel.app/)
+
+or open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ---
 
@@ -22,6 +24,8 @@ I have added optional features :
 
 ✅ **Theme Support**
 
-## 🔄 Recommended: Refresh on Viewport Resize
+## Ligthouse Matrix
 
-To ensure the best animation experience, i recommend **refreshing the page** when resizing the viewport, especially when transitioning **from mobile to tablet or desktop**. This will help optimize animations and prevent unexpected layout issues.
+Here are page report with Lighthouse
+
+![image](/public/images//report.png)
