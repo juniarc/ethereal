@@ -5,7 +5,7 @@ import React, { useRef } from "react";
 
 export const RotatedDevice = ({ children }: { children: React.ReactNode }) => {
   const { gsap, useGSAP } = useGSAPContext();
-  const { deviceType } = useScreenSizeContext();
+  const { screenSize } = useScreenSizeContext();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -17,12 +17,12 @@ export const RotatedDevice = ({ children }: { children: React.ReactNode }) => {
           cardRef.current,
           {
             rotateX: 100,
-            scale: deviceType === "mobile" ? 0.7 : 1.05,
+            // scale: deviceType === "mobile" ? 0.7 : 1.05,
             y: 0,
           },
           {
             rotateX: 0,
-            scale: deviceType === "mobile" ? 0.9 : 1,
+            // scale: deviceType === "mobile" ? 0.9 : 1,
             // y: -100,
             scrollTrigger: {
               trigger: containerRef.current,
@@ -34,7 +34,7 @@ export const RotatedDevice = ({ children }: { children: React.ReactNode }) => {
         );
       }
     },
-    { dependencies: [deviceType] }
+    { dependencies: [screenSize], revertOnUpdate: true }
   );
 
   return (

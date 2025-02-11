@@ -1,6 +1,7 @@
 "use client";
 import { useGSAPContext } from "@/providers/GSAPProvider";
 import { useMountedContext } from "@/providers/MountContext";
+import { useScreenSizeContext } from "@/providers/ScreenSizeProvider";
 import { useEffect, useRef } from "react";
 
 export default function GradientBg({
@@ -22,6 +23,7 @@ export default function GradientBg({
   containerClassName?: string;
 }) {
   const { isMounted } = useMountedContext();
+  const { screenSize } = useScreenSizeContext();
   const { useGSAP, ScrollTrigger } = useGSAPContext();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -113,19 +115,22 @@ export default function GradientBg({
     };
   }, [firstColor, secondColor, thirdColor, fourthColor, size, blendingValue]);
 
-  useGSAP(() => {
-    if (isMounted) {
-      ScrollTrigger.create({
-        trigger: wrapperRef.current,
-        start: "top top",
-        endTrigger: ".community-section",
-        end: "bottom bottom",
-        pin: true,
-        scrub: true,
-        pinSpacing: false,
-      });
-    }
-  }, [isMounted]);
+  useGSAP(
+    () => {
+      if (isMounted) {
+        ScrollTrigger.create({
+          trigger: wrapperRef.current,
+          start: "top top",
+          endTrigger: ".community-section",
+          end: "bottom bottom",
+          pin: true,
+          scrub: true,
+          pinSpacing: false,
+        });
+      }
+    },
+    { dependencies: [isMounted, screenSize], revertOnUpdate: true }
+  );
 
   return (
     <div

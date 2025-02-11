@@ -4,8 +4,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const ScreenSizeContext = createContext<{
   deviceType: "mobile" | "tablet" | "desktop";
+  screenSize: number;
 }>({
   deviceType: "mobile",
+  screenSize: 0,
 });
 
 export const ScreenSizeProvider = ({
@@ -16,14 +18,20 @@ export const ScreenSizeProvider = ({
   const [deviceType, setDeviceType] = useState<"mobile" | "tablet" | "desktop">(
     "mobile"
   );
+  const [screenSize, setScreenSize] = useState(0);
 
   const handleResize = () => {
-    if (window.innerWidth <= 768) {
-      setDeviceType("mobile");
-    } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
-      setDeviceType("tablet");
-    } else {
-      setDeviceType("desktop");
+    if (typeof window !== undefined) {
+      if (window.innerWidth <= 768) {
+        setDeviceType("mobile");
+        setScreenSize(window.innerWidth);
+      } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
+        setDeviceType("tablet");
+        setScreenSize(window.innerWidth);
+      } else {
+        setDeviceType("desktop");
+        setScreenSize(window.innerWidth);
+      }
     }
   };
 
@@ -35,7 +43,7 @@ export const ScreenSizeProvider = ({
     };
   }, []);
   return (
-    <ScreenSizeContext.Provider value={{ deviceType }}>
+    <ScreenSizeContext.Provider value={{ deviceType, screenSize }}>
       {children}
     </ScreenSizeContext.Provider>
   );

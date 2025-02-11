@@ -10,29 +10,34 @@ import Link from "next/link";
 import { FaInstagram, FaTiktok, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { useTheme } from "next-themes";
 import { useMountedContext } from "@/providers/MountContext";
+import { useScreenSizeContext } from "@/providers/ScreenSizeProvider";
 
 export default function CommunitySection() {
   const { isMounted } = useMountedContext();
   const { gsap, useGSAP } = useGSAPContext();
   const { theme } = useTheme();
+  const { screenSize } = useScreenSizeContext();
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const subHeadingRef = useRef<HTMLParagraphElement>(null);
 
-  useGSAP(() => {
-    if (isMounted) {
-      gsap.from(subHeadingRef.current, {
-        opacity: 0,
-        translateY: "100%",
-        ease: "power4.out",
-        duration: 1,
-        scrollTrigger: {
-          trigger: wrapperRef.current,
-          start: "10% bottom",
-        },
-      });
-    }
-  }, []);
+  useGSAP(
+    () => {
+      if (isMounted) {
+        gsap.from(subHeadingRef.current, {
+          opacity: 0,
+          translateY: "100%",
+          ease: "power4.out",
+          duration: 1,
+          scrollTrigger: {
+            trigger: wrapperRef.current,
+            start: "10% bottom",
+          },
+        });
+      }
+    },
+    { dependencies: [screenSize], revertOnUpdate: true }
+  );
 
   if (!isMounted) return;
   return (

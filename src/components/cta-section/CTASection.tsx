@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function CTASection() {
   const { gsap, useGSAP } = useGSAPContext();
-  const { deviceType } = useScreenSizeContext();
+  const { deviceType, screenSize } = useScreenSizeContext();
   const { isMounted } = useMountedContext();
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -20,30 +20,33 @@ export default function CTASection() {
 
   const headingText = "Explore the Ultimate NFT Marketplace Now!";
 
-  useGSAP(() => {
-    const words = headingRef.current?.querySelectorAll(".word");
+  useGSAP(
+    () => {
+      const words = headingRef.current?.querySelectorAll(".word");
 
-    if (isMounted) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: wrapperRef.current,
-          start: "top 90%",
-        },
-      });
-
-      if (words) {
-        tl.from(words, {
-          translateY: "100%",
-          duration: 1.5,
-          ease: "power4.out",
-          stagger: 0.05,
+      if (isMounted) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: wrapperRef.current,
+            start: "top 90%",
+          },
         });
-      }
-    }
-  }, [isMounted]);
 
-  useGSAP(() => {
-    const ctx = gsap.context(() => {
+        if (words) {
+          tl.from(words, {
+            translateY: "100%",
+            duration: 1.5,
+            ease: "power4.out",
+            stagger: 0.05,
+          });
+        }
+      }
+    },
+    { dependencies: [isMounted, screenSize], revertOnUpdate: true }
+  );
+
+  useGSAP(
+    () => {
       if (deviceType === "desktop") {
         gsap.to(imageRef.current, {
           scrollTrigger: {
@@ -54,12 +57,12 @@ export default function CTASection() {
             scrub: true,
           },
           translateY: 0,
+          onComplete: () => console.log("cta"),
         });
       }
-    });
-
-    return () => ctx.revert();
-  }, [deviceType]);
+    },
+    { dependencies: [deviceType, screenSize], revertOnUpdate: true }
+  );
   if (!isMounted) return;
   return (
     <div

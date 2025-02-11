@@ -10,67 +10,12 @@ import { useMountedContext } from "@/providers/MountContext";
 
 export default function DataSection() {
   const { useGSAP, gsap } = useGSAPContext();
-  const { deviceType } = useScreenSizeContext();
+  const { deviceType, screenSize } = useScreenSizeContext();
   const { isMounted } = useMountedContext();
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
-  // useGSAP(() => {
-  //   const ctx = gsap.context(() => {
-  //     gsap.killTweensOf(sectionRef.current);
-  //     gsap.killTweensOf(imageRef.current);
-  //     gsap.timeline().kill();
-  //     // ScrollTrigger.killAll();
-
-  //     gsap.to(".data-text", {
-  //       scrollTrigger: {
-  //         trigger: ".data-text",
-  //         start: "top 90%",
-  //         end: "bottom bottom",
-  //       },
-  //       opacity: 1,
-  //       duration: 1,
-  //       ease: "power4.out",
-  //     });
-
-  //     if (deviceType === "mobile") {
-  //       gsap.to(imageRef.current, {
-  //         scale: 1.5,
-  //         scrollTrigger: {
-  //           trigger: imageRef.current,
-  //           start: "top bottom",
-  //           scrub: true,
-  //         },
-  //       });
-  //     } else {
-  //       const tl = gsap.timeline({
-  //         scrollTrigger: {
-  //           trigger: sectionRef.current,
-  //           start: "top top",
-  //           end: "+=700",
-  //           scrub: true,
-  //           pin: true,
-  //         },
-  //       });
-  //       tl.to(sectionRef.current, {
-  //         scale: 0.9,
-  //         onStart: () => sectionRef.current?.classList.add("md:rounded-[4rem]"),
-  //         onReverseComplete: () =>
-  //           sectionRef.current?.classList.remove("md:rounded-[4rem]"),
-  //       });
-  //       tl.to(
-  //         imageRef.current,
-  //         {
-  //           scale: 1.2,
-  //         },
-  //         0
-  //       );
-  //     }
-  //   });
-
-  //   return () => ctx.revert();
-  // }, [deviceType]);
   useGSAP(
     () => {
       if (isMounted) {
@@ -121,7 +66,7 @@ export default function DataSection() {
         }
       }
     },
-    { dependencies: [deviceType, isMounted] }
+    { dependencies: [deviceType, isMounted, screenSize], revertOnUpdate: true }
   );
   return (
     <div

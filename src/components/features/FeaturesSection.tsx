@@ -4,10 +4,10 @@ import FeatureItem from "./FeatureItem";
 import { useGSAPContext } from "@/providers/GSAPProvider";
 import { useRef } from "react";
 import ColorenHeadingText from "../global/ColoredHeadingText";
-import { useMountedContext } from "@/providers/MountContext";
 import { MdOutlineLock, MdOutlineRocketLaunch } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { TfiWorld } from "react-icons/tfi";
+import { useScreenSizeContext } from "@/providers/ScreenSizeProvider";
 
 const featuresData = [
   {
@@ -50,7 +50,7 @@ const featuresData = [
 
 export default function FeaturesSection() {
   const { useGSAP, gsap, ScrollTrigger } = useGSAPContext();
-  const { isMounted } = useMountedContext();
+  const { screenSize } = useScreenSizeContext();
 
   const headingRef = useRef<HTMLHeadingElement>(null);
   const featuresWrapperRef = useRef<HTMLDivElement>(null);
@@ -59,41 +59,39 @@ export default function FeaturesSection() {
     () => {
       const words = headingRef.current?.querySelectorAll(".word");
 
-      if (isMounted) {
-        if (words) {
-          gsap.from(words, {
-            translateY: "100%",
-            duration: 1.5,
-            ease: "power4.out",
-            stagger: 0.05,
-            scrollTrigger: {
-              trigger: headingRef.current,
-              start: "top 80%",
-            },
-          });
-        }
-
-        gsap.from(featuresWrapperRef.current, {
-          opacity: 0,
+      if (words) {
+        gsap.from(words, {
+          translateY: "100%",
           duration: 1.5,
           ease: "power4.out",
+          stagger: 0.05,
           scrollTrigger: {
-            trigger: featuresWrapperRef.current,
+            trigger: headingRef.current,
             start: "top 80%",
           },
         });
-
-        ScrollTrigger.create({
-          trigger: ".features-section",
-          start: "bottom bottom",
-          endTrigger: ".community-section",
-          end: "top top",
-          pin: true,
-          pinSpacing: false,
-        });
       }
+
+      gsap.from(featuresWrapperRef.current, {
+        opacity: 0,
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: featuresWrapperRef.current,
+          start: "top 80%",
+        },
+      });
+
+      ScrollTrigger.create({
+        trigger: ".features-section",
+        start: "bottom bottom",
+        endTrigger: ".community-section",
+        end: "top top",
+        pin: true,
+        pinSpacing: false,
+      });
     },
-    { dependencies: [isMounted] }
+    { dependencies: [screenSize], revertOnUpdate: true }
   );
   return (
     <div className="test lg:my-40 my-20 flex flex-col items-center relative ">
