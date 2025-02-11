@@ -70,22 +70,22 @@ export default function CommunitySection() {
         </p>
         <ul className="font-bold flex items-center gap-10 text-xl md:text-2xl mt-10 lg:mt-20">
           <li className="dark:bg-primary bg-white group hover:bg-foreground transition-colors p-3 rounded-full">
-            <Link href="*">
+            <Link href="*" aria-label="Ethereal's Titktok">
               <FaTiktok className="dark:text-foreground group-hover:text-primary transition-colors " />
             </Link>
           </li>
           <li className="dark:bg-primary bg-white group hover:bg-foreground transition-colors p-3 rounded-full">
-            <Link href="*">
+            <Link href="*" aria-label="Ethereal's Instagram">
               <FaInstagram className="text-foreground group-hover:text-primary transition-colors" />
             </Link>
           </li>
           <li className="dark:bg-primary bg-white group hover:bg-foreground transition-colors p-3 rounded-full">
-            <Link href="*">
+            <Link href="*" aria-label="Ethereal's X">
               <FaXTwitter className="text-foreground group-hover:text-primary transition-colors" />
             </Link>
           </li>
           <li className="dark:bg-primary bg-white group hover:bg-foreground transition-colors p-3 rounded-full">
-            <Link href="*">
+            <Link href="*" aria-label="Ethereal's Youtube">
               <FaYoutube className="text-foreground group-hover:text-primary transition-colors" />
             </Link>
           </li>

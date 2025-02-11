@@ -54,22 +54,22 @@ export default function Footer() {
         </ul>
         <ul className="font-bold flex items-center gap-10 text-2xl md:text-2xl">
           <li>
-            <Link href="*">
+            <Link href="*" aria-label="Ethereal's TikTok">
               <FaTiktok />
             </Link>
           </li>
           <li>
-            <Link href="*">
+            <Link href="*" aria-label="Ethereal's Instagram">
               <FaInstagram />
             </Link>
           </li>
           <li>
-            <Link href="*">
+            <Link href="*" aria-label="Ethereal's Twitter">
               <FaXTwitter />
             </Link>
           </li>
           <li>
-            <Link href="*">
+            <Link href="*" aria-label="Ethereal's YouTube">
               <FaYoutube />
             </Link>
           </li>

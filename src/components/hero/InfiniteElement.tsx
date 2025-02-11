@@ -9,6 +9,7 @@ import BaseIcon from "@/../public/icons/base-icon.svg";
 import LineaIcon from "@/../public/icons/linea-icon.svg";
 import Image from "next/image";
 import { useRef } from "react";
+import { useScreenSizeContext } from "@/providers/ScreenSizeProvider";
 
 interface BlockchainDataTypes {
   id: number;
@@ -81,7 +82,7 @@ const dummyData: BlockchainDataTypes[] = [
 
 export default function InfiniteElement() {
   const { gsap, useGSAP } = useGSAPContext();
-
+  const { screenSize } = useScreenSizeContext();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const firstGroupRef = useRef<HTMLDivElement>(null);
   const secondGroupRef = useRef<HTMLDivElement>(null);
@@ -123,7 +124,7 @@ export default function InfiniteElement() {
         if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
       };
     },
-    { dependencies: [] }
+    { dependencies: [screenSize], revertOnUpdate: true }
   );
 
   return (

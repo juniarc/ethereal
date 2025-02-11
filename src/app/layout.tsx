@@ -40,7 +40,7 @@ export default function RootLayout({
         Facebook, Instagram
         <meta property="og:title" content="Ethereal" />
         <meta property="og:description" content="Web3 Project" />
-        <meta property="og:url" content="https://yourwebsite.com" />
+        <meta property="og:url" content="https://instagram.com" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Ethereal" />
         {/* Twitter */}

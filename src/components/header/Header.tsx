@@ -49,6 +49,7 @@ export default function Header() {
         <div className="flex items-center gap-3 max-w-[70%]">
           <ConnectBtn />
           <button
+            aria-label="Menu button"
             onClick={handleBurgerBtn}
             className="border-[0.2px] border-foreground p-2 rounded"
           >

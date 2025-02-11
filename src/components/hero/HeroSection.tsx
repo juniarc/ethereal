@@ -12,7 +12,7 @@ import { useMountedContext } from "@/providers/MountContext";
 import Link from "next/link";
 
 export default function HeroSection() {
-  const { deviceType } = useScreenSizeContext();
+  const { deviceType, screenSize } = useScreenSizeContext();
   const { useGSAP, gsap } = useGSAPContext();
   const { isMounted } = useMountedContext();
 
@@ -83,7 +83,7 @@ export default function HeroSection() {
         );
       }
     },
-    { dependencies: [isMounted] }
+    { dependencies: [isMounted, screenSize], revertOnUpdate: true }
   );
 
   if (!isMounted) return;

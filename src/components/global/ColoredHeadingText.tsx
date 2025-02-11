@@ -24,7 +24,7 @@ export default function ColorenHeadingText({
 }) {
   const { useGSAP, gsap } = useGSAPContext();
   const { isMounted } = useMountedContext();
-  const { deviceType } = useScreenSizeContext();
+  const { screenSize } = useScreenSizeContext();
 
   const headingRef = useRef<HTMLHeadingElement>(null);
   const overlayRef = useRef<HTMLSpanElement>(null);
@@ -57,7 +57,7 @@ export default function ColorenHeadingText({
         });
       }
     },
-    { dependencies: [isMounted, deviceType] }
+    { dependencies: [isMounted, screenSize], revertOnUpdate: true }
   );
   if (!isMounted) return;
   return (
